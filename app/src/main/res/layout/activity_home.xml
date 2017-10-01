@@ -28,39 +28,42 @@
         <com.countersample.utils.MyTabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            app:tabMode="scrollable"
+            android:layout_height="wrap_content"
             app:tabGravity="fill"
             app:tabMaxWidth="0dp"
-            android:layout_height="wrap_content" >
+            app:tabMode="scrollable">
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cycle"
-                android:icon="@drawable/ic_home_black_24dp" />
+                android:icon="@drawable/man_cycling"
+                android:text="Cycle" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Running"
-                android:icon="@drawable/ic_home_black_24dp" />
+                android:icon="@drawable/running"
+                android:text="Running" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Barbell"
-                android:icon="@drawable/ic_home_black_24dp" />
+                android:icon="@drawable/gym"
+                android:text="Barbell" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vaulting Box"
-                android:icon="@drawable/ic_home_black_24dp" />
+                android:icon="@drawable/security_safe_box"
+                android:text="Vaulting Box" />
 
-            </com.countersample.utils.MyTabLayout>
+        </com.countersample.utils.MyTabLayout>
 
     </android.support.design.widget.AppBarLayout>
 
+
     <include layout="@layout/timer"></include>
+
+
 
 </android.support.design.widget.CoordinatorLayout>

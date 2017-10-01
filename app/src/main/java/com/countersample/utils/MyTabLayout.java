@@ -2,7 +2,9 @@ package com.countersample.utils;
 
 import android.content.Context;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.lang.reflect.Field;
@@ -37,32 +39,16 @@ public class MyTabLayout  extends TabLayout{
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-//        try {
-//            if (getTabCount() == 0)
-//                return;
-//            Field field = TabLayout.class.getDeclaredField("mScrollableTabMinWidth");
-//            field.setAccessible(true);
-//            field.set(this, (int) (getMeasuredWidth() / (float) getTabCount()));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
 
-//        ViewGroup tabLayout = (ViewGroup)getChildAt(0);
-//
-//        int childCount = tabLayout.getChildCount();
-//
-//        int widths[] = new int[childCount+1];
-//
-//        for(int i = 0; i < childCount; i++){
-//            widths[i] = tabLayout.getChildAt(i).getMeasuredWidth();
-//            widths[childCount] += widths[i];
-//        }
-//
-//        int measuredWidth = getMeasuredWidth();
-//        for(int i = 0; i < childCount; i++){
-//            tabLayout.getChildAt(i).setMinimumWidth(measuredWidth*widths[i]/widths[childCount]);
-//        }
     }
+
+//    @Override
+//    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+//        super.onLayout(changed, l, t, r, b);
+//        View firstTab = ((ViewGroup)getChildAt(0)).getChildAt(0);
+//        View lastTab = ((ViewGroup)getChildAt(0)).getChildAt(((ViewGroup)getChildAt(0)).getChildCount()-1);
+//        ViewCompat.setPaddingRelative(getChildAt(0), (getWidth()/2) - (firstTab.getWidth()/2),0,(getWidth()/2) - (lastTab.getWidth()/2),0);
+//    }
 
     private void initTabMinWidth() {
         int[] wh = Utils.getScreenSize(getContext());
