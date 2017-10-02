@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.countersample.utils.MyTabLayout;
 
@@ -28,7 +29,7 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
     Chronometer chronometer;
     private boolean timerFlag = false;
     private int interval = 1;
-
+    MyTabLayout tabLayout;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
@@ -41,9 +42,10 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
                         return true;
                     case R.id.navigation_profile:
 
-
-
-                        startActivity(new Intent(HomeActivity.this,ProfileActivity.class));
+                        Bundle bundle = new Bundle();
+                        bundle.putString("count",counterTxt.getText().toString());
+                        bundle.putString("time",chronometer.getText().toString());
+                        startActivity(new Intent(HomeActivity.this,ProfileActivity.class).putExtras(bundle));
                         overridePendingTransition(R.anim.slidein,R.anim.slideout);
 
                         return true;
@@ -72,7 +74,7 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
         animation.setDuration(990);
         animation.setInterpolator(new DecelerateInterpolator());
 
-        MyTabLayout tabLayout = (MyTabLayout) findViewById(R.id.tabs);
+        tabLayout = (MyTabLayout) findViewById(R.id.tabs);
         timerBtn = (Button) findViewById(R.id.timer);
         counterTxt = (TextView) findViewById(R.id.counter);
 
@@ -89,11 +91,12 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
         timerBtn.setOnClickListener(v -> {
             counter = 0;
             if (timerFlag) {
+
                 animation.end();
                 chronometer.stop();
                 timerBtn.setText("Go");
-            } else {
 
+            } else {
 
                 animation.start();
 
@@ -161,16 +164,25 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
 
+        tabLayout.setScrollPosition(tab.getPosition(), 0f, true);
 
         if(tab.getPosition() == 0)
         {
+
             interval = 2;
+            Toast.makeText(HomeActivity.this,"Count Value = "+interval,Toast.LENGTH_SHORT).show();
         } else if(tab.getPosition() == 1){
+
             interval = 1;
+            Toast.makeText(HomeActivity.this,"Count Value = "+interval,Toast.LENGTH_SHORT).show();
         }else if(tab.getPosition() == 2){
+
             interval = 5;
+            Toast.makeText(HomeActivity.this,"Count Value = "+interval,Toast.LENGTH_SHORT).show();
         } else{
+
             interval = 10;
+            Toast.makeText(HomeActivity.this,"Count Value = "+interval,Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -182,15 +194,24 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
+        tabLayout.setScrollPosition(tab.getPosition(), 0f, true);
         if(tab.getPosition() == 0)
         {
+
             interval = 2;
+            Toast.makeText(HomeActivity.this,"Count Value = "+interval,Toast.LENGTH_SHORT).show();
         } else if(tab.getPosition() == 1){
+
             interval = 1;
+            Toast.makeText(HomeActivity.this,"Count Value = "+interval,Toast.LENGTH_SHORT).show();
         }else if(tab.getPosition() == 2){
+
             interval = 5;
+            Toast.makeText(HomeActivity.this,"Count Value = "+interval,Toast.LENGTH_SHORT).show();
         } else{
+
             interval = 10;
+            Toast.makeText(HomeActivity.this,"Count Value = "+interval,Toast.LENGTH_SHORT).show();
         }
     }
 
